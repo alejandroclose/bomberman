@@ -1,0 +1,76 @@
+*{
+  border: solid 1px black;
+}
+h1{
+  text-align: center;
+}
+#game{
+  width: 659px;
+  height: 659px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+
+
+}
+
+#playing-board{
+  width: 560px;
+  height: 659px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+
+
+}
+
+.cell{
+  width: 56px;
+  height: 53px;
+  margin: 0;
+  /*border: 0px; */
+}
+
+.scoreboard{
+  width: 100px;
+  height: 659px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+.sb-title{
+  height: 15px;
+  margin: 5px 2px 2px 2px;
+
+}
+
+.sb-time{
+  height: 45px;
+  margin: 5px 2px 15px 2px;
+
+}
+
+.sb-score{
+  height: 45px;
+  margin: 0 2px 15px 2px;
+
+
+}
+
+.sb-level{
+  height: 45px;
+  margin: 0 2px 15px 2px;
+
+}
+
+.sb-lives{
+  height: 45px;
+  margin: 0 2px 15px 2px;
+
+}
