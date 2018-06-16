@@ -30,5 +30,4 @@ function createGameBoard(){
   }
 
 }
-
 createGameBoard();
