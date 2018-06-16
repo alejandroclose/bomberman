@@ -1,14 +1,34 @@
-function Game(options){
-  this.rows = options.rows;
-  this.columns = options.columns;
-  this.ctx = options.ctx;
-}
+var grid = [["*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*"],
+            ["*","-","-","x","-","x","-","-","-","-","-","-","-","-","-","-"],
+            ["*","-","*","-","*","-","*","-","*","-","*","-","*","-","*","-"],
+            ["*","x","-","-","-","x","-","-","-","x","x","-","-","-","-","x"],
+            ["*","x","*","x","*","-","*","-","*","-","*","-","*","x","*","x"],
+            ["*","x","-","-","-","-","-","-","-","-","-","x","x","-","-","x"],
+            ["*","*","-","*","x","*","x","*","x","*","x","*","-","*","-","*"],
+            ["*","x","-","-","x","x","-","-","x","-","x","-","-","-","-","-"],
+            ["*","-","*","x","*","-","*","-","*","-","*","-","*","x","*","*"],
+            ["*","x","-","-","-","-","-","-","-","-","-","x","x","x","-","*"],
+            ["*","*","-","*","x","*","x","*","-","*","-","*","-","*","x","*"],
+            ["*","-","*","x","x","-","x","-","x","-","x","-","x","x","x","x"],
+            ["*","*","*","*","*","*","*","*","*","*","*","*","*","*","-","-"]];
 
-Game.prototype._drawBoard = function (){
-  for (var columnIndex = 0; columnIndex < this.columns; columnIndex++){
-    for (var rowIndex = 0; rowIndex < this.rows; rowIndex++){
-      this.ctx.fillStyle = config.boardColor;
-      this.ctx.fillRect(columnIndex * 10, rowIndex  * 10, 10, 10);
+function createGameBoard(){
+  for(var row = 0; row < grid.length; row++){
+    for(var col = 0; col < grid[row].length; col++){
+      console.log("row", row);
+      console.log("column", col);
+      if(grid[row][col]==="*"){
+        $('#playing-board').append($(`<div class="stone">`).attr('data-row', row).attr('data-col',col));
+      }
+      else if(grid[row][col]==="x"){
+        $('#playing-board').append($(`<div class="bush">`).attr('data-row', row).attr('data-col',col));
+      }
+      else if(grid[row][col]==="-"){
+        $('#playing-board').append($(`<div class="grass">`).attr('data-row', row).attr('data-col',col));
+      }
     }
   }
+
 }
+
+createGameBoard();

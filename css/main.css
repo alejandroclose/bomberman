@@ -9,7 +9,7 @@ canvas {
 }
 
 #game{
-  width: 659px;
+  width: 700px;
   height: 659px;
   margin: 0 auto;
   display: flex;
@@ -21,8 +21,8 @@ canvas {
 }
 
 #playing-board{
-  width: 560px;
-  height: 659px;
+  width: 925px;
+  height: 500px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -33,14 +33,38 @@ canvas {
 }
 
 .cell{
-  width: 56px;
-  height: 53px;
+  width: 35px;
+  height: 35px;
   margin: 0;
   /*border: 0px; */
 }
 
+.stone{
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  background-color: red;
+  /*border: 0px; */
+}
+
+.bush{
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  background-color: yellow;
+  /*border: 0px; */
+}
+
+.grass{
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  background-color: green;
+  /*border: 0px; */
+}
+
 .scoreboard{
-  width: 100px;
+  width: 150px;
   height: 659px;
   display: flex;
   flex-direction: column;
@@ -77,4 +101,8 @@ canvas {
   height: 45px;
   margin: 0 2px 15px 2px;
 
+}
+
+#bomberman{
+  background-color: brown;
 }
