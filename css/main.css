@@ -39,6 +39,20 @@ canvas {
   /*border: 0px; */
 }
 
+.player{
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  background-color: blue;
+}
+
+.bomb{
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+  background-color: black;
+}
+
 .stone{
   width: 35px;
   height: 35px;
@@ -101,8 +115,4 @@ canvas {
   height: 45px;
   margin: 0 2px 15px 2px;
 
-}
-
-#bomberman{
-  background-color: brown;
 }
