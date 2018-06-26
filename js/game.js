@@ -10,7 +10,7 @@ var grid = [["*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*"],
             ["*","x","-","-","-","-","-","-","-","-","-","x","x","x","-","*"],
             ["*","*","-","*","x","*","x","*","-","*","-","*","-","*","x","*"],
             ["*","-","*","x","x","-","x","-","x","-","x","-","x","x","x","x"],
-            ["*","*","*","*","*","*","*","*","*","*","*","*","*","*","-","-"]];
+            ["*","*","*","*","*","*","*","*","*","*","*","*","*","*","F","F"]];
 
 function Game(){
 
@@ -30,9 +30,11 @@ function createGameBoard(){
       else if(grid[row][col]==="-"){
         $('#playing-board').append($(`<div class="grass">`).attr('data-row', row).attr('data-col',col));
       }
+      else if(grid[row][col]==="F"){
+        $('#playing-board').append($(`<div class="finish">`).attr('data-row', row).attr('data-col',col));
+      }
     }
   }
-
 }
 createGameBoard();
 
@@ -149,6 +151,22 @@ function explotion(){
     this.position = $('[data-col="' + cellCol + '"][data-row="' + lowerRow + '"]').removeClass().addClass("grass");
   }
   $('.bomb').remove();
-
-
 }
+
+function Countdown(){
+  var maxTime = 30;
+
+  function timer(){
+    var id = setTimeout(timer,1000);
+    $('.sb-time').html(maxTime);
+    maxTime --;
+    if (maxTime == -1){
+      clearTimeout(id);
+      var gameOver = $('.grass').removeClass().addClass("game-game-over")
+      gameoverMessage();
+    }
+    console.log(maxTime);
+  }
+  timer();
+};
+Countdown();
