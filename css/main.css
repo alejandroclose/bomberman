@@ -49,9 +49,9 @@ canvas {
 }
 
 .bomb{
-  width: 20px;
-  height: 20px;
-  margin: 0 auto;
+  width: 35px;
+  height: 35px;
+  margin: 0;
   background-color: black;
 }
 
