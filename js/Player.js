@@ -2,10 +2,10 @@ function Player() {
   this.position = {
     x: 1,
     y: 1,
-  },
-  this.bombs = [],
+  };
+  this.bombs = [];
   this.maxBombs = 3;
-
+  this.lives = 3;
 }
 
 Player.prototype.moveUp = function() {
@@ -45,12 +45,12 @@ Player.prototype.whereAmI = function() {
 }
 
 Player.prototype.throwBomb = function(){
-  if(this.bombs.length < this.maxBombs){
-    this.bombs.push(new Bomb(this.position));  
-  } 
-    
+  
 }
 
+// Player.prototype.putBomb = function(){
+//   return new Bomb(this.position)
+// }
 
 
 

@@ -1,8 +1,9 @@
-function Bomb(position) {
+function Bomb(position, player) {
   this.position = {
     x: position.x ,
     y: position.y,
-  }
+  };
+  this.player = player;
 }
 
 Bomb.prototype.whereIs = function() {
@@ -10,6 +11,4 @@ Bomb.prototype.whereIs = function() {
   console.log('y', this.position.y)
 }
 
-// Bomb.prototype.drawBomb = function(){
-//   $(`[data-col=${this.position.y}][data-row=${this.position.x}]`).removeClass().addClass("bomb");
-// }
+

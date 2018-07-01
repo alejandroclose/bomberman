@@ -1,29 +1,31 @@
 *{
-  border: solid 1px black;
   font-family: 'Monoton', cursive;
+  color: black;
+} 
+
+body{
+  background-color: white;
 }
 h1{
   text-align: center;
 }
-canvas {
-  border: 1px solid red;
-}
 
 #game{
-  width: 700px;
-  height: 659px;
+  width: 925px;
+  height: 700px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
+  
 
 
 }
 
 #playing-board{
-  width: 925px;
-  height: 500px;
+  width: 512px;
+  height: 416px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -34,64 +36,79 @@ canvas {
 }
 
 .game-game-over{
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   margin: 0;
   background-color: black;
 
 }
 
 .player{
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   margin: 0;
-  background-color: blue;
+  background-color: green;
+  background-image: url('../images/bomberman.png');
 }
 
 .bomb{
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   margin: 0;
-  background-color: black;
+  background-color: green;
+  background-image: url("../images/bomb.png");
 }
 
 .stone{
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   margin: 0;
-  background-color: red;
-  /*border: 0px; */
+  background-color: darkgreen; 
+  background-image: url("../images/mountain.png");
+  */
 }
 
 .bush{
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   margin: 0;
-  background-color: yellow;
-  /*border: 0px; */
+  background-color: darkgreen;
+  background-image: url("../images/bush.png");
 }
 
 .grass{
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   margin: 0;
   background-color: green;
-  /*border: 0px; */
+  /*
+  background-image: url("../images/spritesheet.png");
+  background-size: calc(34px * 68) 1470px;
+  background-position: calc(calc(34px * -4) - 2px) calc(calc(34px * -1) - 2px);
+  */
 }
 
 .finish{
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   margin: 0;
   background-color: greenyellow; 
 }
 
+.explosion{
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  background-color: yellow;
+}
+
 .scoreboard{
   width: 150px;
-  height: 659px;
+  height: 416px;
   display: flex;
   flex-direction: column;
   text-align: center;
+  background-color: grey;
 
 }
 
@@ -101,7 +118,7 @@ canvas {
 
 }
 
-.sb-time{
+.sb-bombs{
   height: 45px;
   margin: 5px 2px 15px 2px;
 
