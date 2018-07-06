@@ -1,16 +1,16 @@
 var grid = [["*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*"],
-            ["*","-","-","-","-","x","-","-","-","-","-","-","-","-","-","-"],
-            ["*","-","*","x","*","-","*","-","*","-","*","-","*","-","*","-"],
-            ["*","-","x","-","-","x","-","-","-","x","x","-","-","-","-","x"],
-            ["*","x","*","x","*","-","*","-","*","-","*","-","*","x","*","x"],
-            ["*","x","-","-","-","-","-","-","-","-","-","x","x","-","-","x"],
-            ["*","*","-","*","x","*","x","*","x","*","x","*","-","*","-","*"],
-            ["*","x","-","-","x","x","-","-","x","-","x","-","-","-","-","-"],
+            ["*","-","-","-","-","x","-","x","-","x","x","x","-","x","-","*"],
+            ["*","-","*","x","*","-","*","x","*","-","*","x","*","x","*","*"],
+            ["*","-","x","x","-","x","-","x","-","x","x","-","-","-","-","*"],
+            ["*","x","*","x","*","-","*","-","*","-","*","-","*","x","*","*"],
+            ["*","x","x","-","-","x","-","x","-","x","-","x","x","-","-","*"],
+            ["*","*","x","*","x","*","x","*","x","*","x","*","-","*","-","*"],
+            ["*","x","-","-","x","x","-","-","x","-","x","-","-","-","-","*"],
             ["*","-","*","x","*","-","*","-","*","-","*","-","*","x","*","*"],
             ["*","x","-","-","-","-","-","-","-","-","-","x","x","x","-","*"],
-            ["*","*","-","*","x","*","x","*","-","*","-","*","-","*","x","*"],
-            ["*","-","*","x","x","-","x","-","x","-","x","-","x","x","x","x"],
-            ["*","*","*","*","*","*","*","*","*","*","*","*","*","*","F","F"]];
+            ["*","*","x","*","x","*","x","*","x","*","x","*","x","*","x","*"],
+            ["*","*","*","x","x","-","x","-","x","x","x","-","x","x","x","x"],
+            ["*","*","*","*","*","*","*","*","*","*","*","*","*","*","-","-"]];
 
             
 function Game(){
@@ -25,10 +25,11 @@ Game.prototype.start = function(){
   this.renderPlayer();
   this._assignControlsToKeys();
 }
-
+// show scroreboard information
 Game.prototype.scoreBoard = function() {
   $('.sb-lives').html(this.player.lives);
-  $('.sb-bombs').html(this.player.bombs.length);
+  $('.sb-bombs').html(this.player.maxBombs - this.player.bombsThrown);
+  $('.sb-score').html(this.player.score);
 }
 
 Game.prototype.renderGameBoard = function() {
@@ -61,6 +62,7 @@ Game.prototype.renderBombs = function() {
     } 
 }
 
+// clean and update renders
 Game.prototype._update = function () {
   this.intervalGame = setInterval(function(){
     this.clean();
@@ -75,6 +77,7 @@ Game.prototype.clean = function() {
   $('#playing-board').empty()
 }
 
+// arrow keys function assign
 Game.prototype._assignControlsToKeys = function () {
   document.onkeydown = function (e) {
     switch (e.keyCode) {
@@ -97,20 +100,21 @@ Game.prototype._assignControlsToKeys = function () {
   }.bind(this);
 }
 
+// create bomb instance and add/remove to the bombs array.
 Game.prototype.putBomb = function() {
-  console.log("Tic")
-  if(this.player.bombs.length < this.player.maxBombs){
+  if(this.player.bombsThrown < this.player.maxBombs){
+    console.log("Tic")
     this.bomb = new Bomb(this.player.position);
     this.player.bombs.push(this.bomb);
-  } 
+    this.player.bombsThrown = this.player.bombsThrown + 1;
   setTimeout(function(){
     this.player.bombs.shift();
-  }.bind(this), 1000)
+  }.bind(this), 3000)
   this.explosion();
 }
-
+}
+// explotion removes only bushes and decreses life if on the explotion area.
 Game.prototype.explosion = function(){
-  var self = this;
   setTimeout(function(){
     console.log("Boom!");
     var playerCol = this.player.position.y;
@@ -121,33 +125,38 @@ Game.prototype.explosion = function(){
     var bombRightCol = this.bomb.position.y + 1;
     var bombLowerRow = this.bomb.position.x + 1;
     var bombLeftCol = this.bomb.position.y - 1;
-    
+
     //remove bushes up
-    if($(`[data-col=${this.bomb.position.y}][data-row=${bombUpperRow}]`).hasClass('bush')){
+    if($(`[data-col=${this.bomb.position.y}][das4ta-row=${bombUpperRow}]`).hasClass('bush')){
       grid[this.bomb.position.x-1][this.bomb.position.y] = "-";
+      this.player.score = this.player.score + 10;
     }
    
     //remove bushes right
     if($(`[data-col=${bombRightCol}][data-row=${this.bomb.position.x}]`).hasClass('bush')){
-
       grid[this.bomb.position.x][this.bomb.position.y + 1] = "-";
+      this.player.score = this.player.score + 10;
     }
 
     //remove bushes down
     if($(`[data-col=${this.bomb.position.y}][data-row=${bombLowerRow}]`).hasClass('bush')){
       grid[this.bomb.position.x + 1][this.bomb.position.y] = "-";
+      this.player.score = this.player.score + 10;
     }
 
     //remove bushes left
     if($(`[data-col=${bombLeftCol}][data-row=${this.bomb.position.x}]`).hasClass('bush')){
       grid[this.bomb.position.x][this.bomb.position.y - 1] = "-";
+      this.player.score = this.player.score + 10;
     }
 
     //kill bomberman over bomb
     if((bombCol == playerCol) && (bombRow == playerRow)){
-      this.player.lives = this.player.lives - 1;
+      this.player.lives = this.player.lives - 2;
       console.log(this.player.lives);
       console.log("over");
+      this.player.score = this.player.score - 15;
+
     }
 
     //kill bomberman Upper Row
@@ -155,6 +164,7 @@ Game.prototype.explosion = function(){
       this.player.lives = this.player.lives - 1;
       console.log(this.player.lives);
       console.log("upper");
+      this.player.score = this.player.score - 10;
     }
 
     //kill bomberman Right Col
@@ -162,6 +172,7 @@ Game.prototype.explosion = function(){
       this.player.lives = this.player.lives - 1;
       console.log(this.player.lives);
       console.log("right");
+      this.player.score = this.player.score - 10;
     }
 
     //kill bomberman Lower Row
@@ -169,6 +180,7 @@ Game.prototype.explosion = function(){
       this.player.lives = this.player.lives - 1;
       console.log(this.player.lives);
       console.log("lower");
+      this.player.score = this.player.score - 10;
     }
 
     //kill bomberman Left Col
@@ -176,11 +188,12 @@ Game.prototype.explosion = function(){
       this.player.lives = this.player.lives - 1;
       console.log(this.player.lives);
       console.log("left");
+      this.player.score = this.player.score - 10;
     }
-  }.bind(this), 1000)
+    
+  }.bind(this), 3000)
     
 }
-
 
 /*
 Game.prototype.throwBomb = function(){

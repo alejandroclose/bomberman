@@ -14,8 +14,20 @@
   <div id="header">
     <h1>B<i class="em em-bomb"></i>mberMoji</h1>
   </div>
-  <div id="game">
+  <section id="start">
+    <div class="instructions">
+
+    </div>
+    <div class="start-btn">
+      <button id="btn-start">START</button>
+    </div>
+
+    </section>
+  <section id="game" class="disable">
     <div id="playing-board">
+    </div>
+    <div id="game-over">
+      Game Over!
     </div>
 
     <div class="scoreboard">
@@ -24,12 +36,13 @@
       <div class="sb-score"></div>
 
       <div class="sb-title">Level</div>
-      1
+      <br>
       <div class="sb-level">
-
+        1
       </div>
 
       <div class="sb-title"><i class="em em-bomb"></i></div>
+      <br>
       <div class="sb-bombs">
 
       </div>
@@ -39,15 +52,18 @@
       <div class="sb-lives">
 
       </div>
-      <button type="button">click</button>
+      <button class="restart" type="button">RESTART</button>
     </div>
 
-  </div>
-  <script src="../bomberman/js/main.js"></script>
+  </section>
+  <section>
+
+  </section>
   <script src="../bomberman/js/config.js"></script>
-  <script src="../bomberman/js/Game.js"></script>
-  <script src="../bomberman/js/Player.js"></script>
   <script src="../bomberman/js/Bomb.js"></script>
+  <script src="../bomberman/js/Player.js"></script>
+  <script src="../bomberman/js/Game.js"></script>
+  <script src="../bomberman/js/main.js"></script>
   
 </body>
 </html>

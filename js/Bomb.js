@@ -1,9 +1,8 @@
-function Bomb(position, player) {
+function Bomb(position) {
   this.position = {
     x: position.x ,
     y: position.y,
   };
-  this.player = player;
 }
 
 Bomb.prototype.whereIs = function() {

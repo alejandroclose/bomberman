@@ -10,17 +10,69 @@ h1{
   text-align: center;
 }
 
-#game{
-  width: 925px;
-  height: 700px;
+#start{
+  width: 612px;
+  height: 416px;
+  margin: 0 auto;
+  background-image: url("../images/wall-e-earth.png");
+}
+
+.instructions{
+  width: 612px;
+  height: 300px;
+}
+
+.start-btn{
+  width: 612px;
+  height: 116px;
+  text-align: center;
+  margin: 0 200px 0 0;
+}
+
+#btn-start {
+  background: #9fa5a8;
+  background-image: -webkit-linear-gradient(top, #9fa5a8, #000000);
+  background-image: -moz-linear-gradient(top, #9fa5a8, #000000);
+  background-image: -ms-linear-gradient(top, #9fa5a8, #000000);
+  background-image: -o-linear-gradient(top, #9fa5a8, #000000);
+  background-image: linear-gradient(to bottom, #9fa5a8, #000000);
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  border-radius: 12px;
+  text-shadow: 8px 3px 4px #666666;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  border: dotted #090d0f 2px;
+  text-decoration: none;
+}
+
+#btn-start:hover {
+  background: #01060a;
+  background-image: -webkit-linear-gradient(top, #01060a, #9fa5a8);
+  background-image: -moz-linear-gradient(top, #01060a, #9fa5a8);
+  background-image: -ms-linear-gradient(top, #01060a, #9fa5a8);
+  background-image: -o-linear-gradient(top, #01060a, #9fa5a8);
+  background-image: linear-gradient(to bottom, #01060a, #9fa5a8);
+  text-decoration: none;
+}
+
+.game-screen{
+  width: 700px;
+  height: 500px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  
+}
 
-
+#game-over{
+  width: 700px;
+  height: 500px;
+  margin: 0 auto;
+  display: none;
+  text-align: center;
 }
 
 #playing-board{
@@ -31,8 +83,16 @@ h1{
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
+}
 
-
+.landing{
+  width: 512px;
+  height: 416px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
 .game-game-over{
@@ -40,7 +100,6 @@ h1{
   height: 32px;
   margin: 0;
   background-color: black;
-
 }
 
 .player{
@@ -64,8 +123,7 @@ h1{
   height: 32px;
   margin: 0;
   background-color: darkgreen; 
-  background-image: url("../images/mountain.png");
-  */
+  background-image: url("../images/moai.png");
 }
 
 .bush{
@@ -73,7 +131,7 @@ h1{
   height: 32px;
   margin: 0;
   background-color: darkgreen;
-  background-image: url("../images/bush.png");
+  background-image: url("../images/oil.png");
 }
 
 .grass{
@@ -81,11 +139,6 @@ h1{
   height: 32px;
   margin: 0;
   background-color: green;
-  /*
-  background-image: url("../images/spritesheet.png");
-  background-size: calc(34px * 68) 1470px;
-  background-position: calc(calc(34px * -4) - 2px) calc(calc(34px * -1) - 2px);
-  */
 }
 
 .finish{
@@ -103,7 +156,7 @@ h1{
 }
 
 .scoreboard{
-  width: 150px;
+  width: 100px;
   height: 416px;
   display: flex;
   flex-direction: column;
@@ -141,4 +194,8 @@ h1{
   height: 45px;
   margin: 0 2px 15px 2px;
 
+}
+
+.disable {
+  display: none;
 }
