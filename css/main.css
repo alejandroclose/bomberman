@@ -68,14 +68,13 @@ h1{
 }
 
 #game-over{
-  width: 700px;
-  height: 500px;
-  margin: 0 auto;
-  display: none;
+  width: 512px;
+  height: 416px;
   text-align: center;
+  background-image: url("../images/background_gameover1.png")
 }
 
-#playing-board{
+.game-board{
   width: 512px;
   height: 416px;
   display: flex;

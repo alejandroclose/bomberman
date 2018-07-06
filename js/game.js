@@ -25,6 +25,14 @@ Game.prototype.start = function(){
   this.renderPlayer();
   this._assignControlsToKeys();
 }
+
+Game.prototype._youLose = function () {
+  soundInGame.pause();
+  soundLoser.play();
+  this.caugth = true;
+  $('.loser-screen').removeClass('disable');
+};
+
 // show scroreboard information
 Game.prototype.scoreBoard = function() {
   $('.sb-lives').html(this.player.lives);
@@ -36,16 +44,16 @@ Game.prototype.renderGameBoard = function() {
   for(var row = 0; row < grid.length; row++){
     for(var col = 0; col < grid[row].length; col++){
       if(grid[row][col]==="*"){
-        $('#playing-board').append($(`<div class="stone">`).attr('data-row', row).attr('data-col',col));
+        $('.game-board').append($(`<div class="stone">`).attr('data-row', row).attr('data-col',col));
       }
       else if(grid[row][col]==="x"){
-        $('#playing-board').append($(`<div class="bush">`).attr('data-row', row).attr('data-col',col));
+        $('.game-board').append($(`<div class="bush">`).attr('data-row', row).attr('data-col',col));
       }
       else if(grid[row][col]==="-"){
-        $('#playing-board').append($(`<div class="grass">`).attr('data-row', row).attr('data-col',col));
+        $('.game-board').append($(`<div class="grass">`).attr('data-row', row).attr('data-col',col));
       }
       else if(grid[row][col]==="F"){
-        $('#playing-board').append($(`<div class="finish">`).attr('data-row', row).attr('data-col',col));
+        $('.game-board').append($(`<div class="finish">`).attr('data-row', row).attr('data-col',col));
       }
     }
   }
@@ -74,7 +82,7 @@ Game.prototype._update = function () {
 }
 
 Game.prototype.clean = function() {
-  $('#playing-board').empty()
+  $('.game-board').empty()
 }
 
 // arrow keys function assign
@@ -189,6 +197,12 @@ Game.prototype.explosion = function(){
       console.log(this.player.lives);
       console.log("left");
       this.player.score = this.player.score - 10;
+    }
+
+    if(this.player.lives <= 0){
+      console.log("game over yo!")
+      $('#playing-board').removeClass('game-board').addClass('disable');
+      $('#game-over').removeClass('disable')
     }
     
   }.bind(this), 3000)
